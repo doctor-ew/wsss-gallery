@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<link rel="stylesheet" href="bower_components/dropzone/dist/dropzone.css">
+		<link rel="stylesheet" href="bower_components/slick-carousel/slick/slick.css">
+		<link rel="stylesheet" href="bower_components/slick-carousel/slick/slick-theme.css">
+		<style type="text/css" media="screen">
+		body, html {
+			background: #4DBD33;
+			margin: 0 auto;
+		}
+		.slick-slide {
+		    outline: none
+		}
+		.carouseler {
+		    display: block;
+    		margin: 0 auto;
+		    /*width: 60%;*/
+		    text-align:center;
+		    vertical-align: middle;
+		    cursor:none;
+		}
+		.carouseler .img_holder {
+		    display: inline-block;
+		    vertical-align: middle;
+		     white-space: nowrap;
+		    text-align: center; 
+		    margin: auto;
+		}
+		.helper {
+		    display: inline-block;
+		    height: 100%;
+		    vertical-align: middle;
+		}
+
+		.carouseler .img_holder img {
+		    display: inline;
+		    height:864px !important;
+		    line-height: normal;
+		    vertical-align: middle;
+		    text-align:center;
+		}
+		/* */
+		.carouseler button{
+			visibility: hidden;
+		}
+		/* */	
+		#wrapper {
+		  -webkit-perspective: 864px;
+		  -webkit-perspective-origin: 50% 300px;
+		  perspective: 864px;
+		  perspective-origin: 50% 300px;
+		 /* margin-top: 150px;*/
+		}
+/**/
+		.cms {
+			display: none;
+		}
+/**/
+
+		#cube {
+		  position: relative;
+		  margin: 0 auto;
+		  height: 100%;
+		  width: 100%;
+		  -webkit-transform-style: preserve-3d;
+		  -webkit-transition: all 2s ease;
+		  transform-style: preserve-3d;
+		  transition: all 2s ease;
+		}
+		.one, .four,.five,.six {
+			visibility: hidden;
+						display: none;
+
+		}
+		.two, .three {
+		  position: absolute;
+		/*  height: 100%;*/
+		  height:864px !important;
+
+		  width: 100%;
+		  /*background-color: white;*/
+		  /*border: solid 1px #ccc;*/
+		}
+
+		#cube .one {
+		  /* translateZ is de helft van de breedte van de cubus */
+		  -webkit-transform: rotateX(90deg) translateZ(200px);
+		  transform: rotateX(90deg) translateZ(200px);
+		}
+
+		#cube .two {
+		  -webkit-transform: translateZ(200px);
+		  transform: translateZ(200px);
+		}
+
+		#cube .three {
+		  -webkit-transform: rotateY(90deg) translateZ(200px);
+		  transform: rotateY(90deg) translateZ(200px);
+		  /*margin-top: 150px;*/
+		  width:80%;
+		}
+
+		#cube .four {
+		  -webkit-transform: rotateY(180deg) translateZ(200px);
+		  transform: rotateY(180deg) translateZ(200px);
+		}
+
+		#cube .five {
+		  -webkit-transform: rotateY(-90deg) translateZ(200px);
+		  transform: rotateY(-90deg) translateZ(200px);
+		}
+
+		#cube .six {
+		  -webkit-transform: rotateX(-90deg) translateZ(200px) rotate(180deg);
+		  transform: rotateX(-9	0deg) translateZ(200px) rotate(180deg);
+		}		</style>
+	</head>
+	<body>
+		
+		<!-- <div id="wrapper"> -->
+		  <div id="cube">
+		    <div class="face one">One</div>
+			<div class="carouseler face two enabled"></div>
+		    <ul class="face cms three disabled"></ul>
+		    <div class="face four">4444</div>
+		    <div class="face five">5555</div>
+		    <div class="face six">666666</div>
+
+			</div>
+		   <!-- </div> -->
+
+
+
+<!-- 		<form id="my-awesome-dropzone" action="/target" class="dropzone"></form> -->
+
+		<!-- <script src="bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script> -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+		<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+		<script src="bower_components/slick-carousel/slick/slick.js" type="text/javascript" ></script>
+		<script src="bower_components/dropzone/dist/dropzone.js" type="text/javascript" ></script>
+
+		<script>
+			function doArrayStuff(arr_images){
+				window.arr_images = arr_images;
+				$.each(arr_images, function( index, filename ) {
+				$(".carouseler").append($("<div class=\"img_holder\"><span class=\"helper\"></span><img src=" + filename + "></img></div>"));
+				$('.carouseler .img_holder').css({"height":$(document).height()});
+				
+				});
+			};
+			$(function() {
+			    var dir = "imgs/";
+			    var fileextension = ".jpg";
+			    var arr_images = [];
+			    $.ajax({
+			        url: dir,
+			        success: function(data) {
+			            $(data).find("a:contains(" + fileextension + ")").each(function() {
+			            	console.log("data:",$(this));
+			                var filename = dir + $(this).attr("href");
+			                arr_images.push(filename);
+/*
+			                $(".carouseler").append($("<div class=\"img_holder\"><span class=\"helper\"></span><img src=" + filename + "></img></div>"));
+			                $('.carouseler .img_holder').css({"height":$(document).height()});
+			            	console.log("data:",filename);
+*/
+			            });
+			            doArrayStuff(arr_images);
+			            $('.carouseler').slick().css({"height":$(document).height()});
+
+
+			            /*
+           			    
+				{
+			            	adaptiveHeight: true,
+			            	touchMove: true,
+                			arrows: true
+			            }
+           			    $('.carouseler').slick({
+           			    	centerMode: true//,
+  							//centerPadding: '60px'
+           			    });
+						*/
+			        }
+			    });
+
+				$(document).keypress(function(e)
+				{
+				    var s = String.fromCharCode(e.which);
+				    if (s.match(/[a-zA-Z\.]/)){
+				        console.log(s + ' is a match!');
+				        switch(s){
+				        	case "a":
+				        	case "z":
+					    	$(".slick-prev").click();
+				        		break;
+				        	case "s":
+				        	case "d":
+				        	case "x":
+				    			$(".slick-next").click()
+				    			break;
+				        }
+				    }
+				});
+
+			});
+		</script>
+	</body>
+</html>
+

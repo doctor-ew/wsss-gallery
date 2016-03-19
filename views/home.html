@@ -1,0 +1,9 @@
+<slick ng-if="dataLoaded" init-onload="false" data="dataLoaded" settings="slickConfig">
+    <div carouseler class="carouseler face two enabled" ng-repeat="value in images">
+        <div class="img_holder">
+            <span class="helper"></span>
+            <img src="{{value.source}}" class="omg_img {{value}} img_num_{{$index}}" data-img_num="{{$index}}" />
+
+        </div>
+    </div>
+</slick>

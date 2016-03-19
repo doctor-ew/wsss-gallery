@@ -1,0 +1,36 @@
+var app = angular.module('plunker', ['ui.bootstrap', 'ui.bootstrap.tpls','ui.router']);
+app.config(function($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise("/");
+    $stateProvider
+        .state('state1', {
+          url: "/",
+          template: 'Hello from the first Tab!',
+          controller: 'FirstCtrl',
+          data:{}
+        })
+        .state('state2', {
+          url: "/route2",
+          template: 'Hello from the 2nd Tab!<br>' +
+                    '<a ui-sref="state2.list">Show List</a><div ui-view></div>',
+          controller: 'SecondCtrl',
+          data: {}
+        })
+          .state('state2.list', {
+            url: '/list',
+            template: '<h2>Nest list state</h2><ul><li ng-repeat="thing in things">{{thing}}</li></ul>',
+            controller: 'SecondCtrl',
+            data: {}
+          });
+});
+
+app.controller('FirstCtrl', ['$scope', '$stateParams', '$state', function($scope,$stateParams,$state){
+  
+}]);
+
+app.controller('SecondCtrl', ['$scope', '$stateParams', '$state', function($scope,  $stateParams, $state){
+  $scope.things = ["A", "Set", "Of", "Things"];
+}]);
+
+app.controller('Tabs', ['$scope', '$stateParams', '$state', function($scope, $stateParams, $state){
+  
+}]);

@@ -1,0 +1,38 @@
+'use strict';
+angular.module('wsssGalleryApp', ['slickCarousel', 'ngRoute']).config(['$routeProvider', function($routeProvider) {
+    $routeProvider.when('/', {
+        templateUrl: 'views/home.html',
+        controller: 'SlickController'
+    }).when('/cms/', {
+        templateUrl: 'views/cms.html',
+        controller: 'CMSController'
+    }).otherwise({
+        redirectTo: '/'
+    });
+}]).config(['slickCarouselConfig', function(slickCarouselConfig) {
+    slickCarouselConfig.dots = true;
+    slickCarouselConfig.autoplay = false;
+}]).controller('SlickController', function($scope, $timeout, $http) {
+    window._scope = $scope;
+    $http.get('order.json').success(function(data, status, headers, config) {
+        $scope.images = data;
+        console.log("|-o-| success", data, $scope.images);
+    }).
+    error(function(data, status, headers, config) {
+        console.log("{-x-} error", data, status, headers, config);
+    });
+
+$scope.slickConfig = {
+    enabled: true,
+    autoplay: true,
+    draggable: false,  
+    autoplaySpeed: 3000,
+    method: {},
+    event: {
+        beforeChange: function (event, slick, currentSlide, nextSlide) {
+        },
+        afterChange: function (event, slick, currentSlide, nextSlide) {
+        }
+    }
+};
+}).controller('CMSController', function($scope) {});

@@ -1,0 +1,215 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>jQuery 3D Cube Demo</title>
+<style>
+@import url(http://fonts.googleapis.com/css?family=Anton|Roboto);
+body {
+  margin: 0px;
+  font-family: 'Roboto', sans-serif;
+}
+
+nav {
+  display: block;
+  padding: 10px;
+  background-color: #cbe5db;
+}
+
+nav ul {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+
+nav ul li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  font-family: 'Anton', sans-serif;
+  font-weight: normal;
+  color: #2c966d;
+  font-size: 1.2em;
+}
+
+h1 {
+  font-family: 'Anton', sans-serif;
+  font-weight: normal;
+  margin-top: 0px;
+  border-bottom: solid 1px #ccc;
+  color: #2c966d;
+}
+
+#wrapper {
+  -webkit-perspective: 1100px;
+  -webkit-perspective-origin: 50% 300px;
+  perspective: 1100px;
+  perspective-origin: 50% 300px;
+  margin-top: 150px;
+}
+
+#cube {
+  position: relative;
+  margin: 0 auto;
+  height: 400px;
+  width: 400px;
+  -webkit-transform-style: preserve-3d;
+  -webkit-transition: all 2s ease;
+  transform-style: preserve-3d;
+  transition: all 2s ease;
+}
+
+.face {
+  position: absolute;
+  height: 360px;
+  width: 360px;
+  padding: 20px;
+  background-color: white;
+  border: solid 1px #ccc;
+}
+
+input,
+textarea {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+textarea { height: 150px; }
+
+input[type="submit"] {
+  background-color: #2c966d;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  border: none;
+  font-family: 'Anton', sans-serif;
+  font-size: 1.2em;
+}
+
+#cube .one {
+  /* translateZ is de helft van de breedte van de cubus */
+  -webkit-transform: rotateX(90deg) translateZ(200px);
+  transform: rotateX(90deg) translateZ(200px);
+}
+
+#cube .two {
+  -webkit-transform: translateZ(200px);
+  transform: translateZ(200px);
+}
+
+#cube .three {
+  -webkit-transform: rotateY(90deg) translateZ(200px);
+  transform: rotateY(90deg) translateZ(200px);
+}
+
+#cube .four {
+  -webkit-transform: rotateY(180deg) translateZ(200px);
+  transform: rotateY(180deg) translateZ(200px);
+}
+
+#cube .five {
+  -webkit-transform: rotateY(-90deg) translateZ(200px);
+  transform: rotateY(-90deg) translateZ(200px);
+}
+
+#cube .six {
+  -webkit-transform: rotateX(-90deg) translateZ(200px) rotate(180deg);
+  transform: rotateX(-90deg) translateZ(200px) rotate(180deg);
+}
+</style>
+</head>
+
+<body>
+<nav>
+  <ul>
+    <li><a href="#" id="homelink">Home</a></li>
+    <li><a href="#" id="aboutLink">About</a></li>
+    <li><a href="#" id="newsLink">News</a></li>
+    <li><a href="#" id="contactLink">Contact</a></li>
+  </ul>
+</nav>
+<h1 align="center">jQuery 3D Cube Demo</h1>
+<div class="jquery-script-ads" align="center"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-2783044520727903";
+/* jQuery_demo */
+google_ad_slot = "2780937993";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></div>
+<div id="wrapper">
+  <div id="cube">
+    <div class="face one"></div>
+    <div class="face two">
+      <h1>Home</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum placerat arcu in volutpat pulvinar. Ut a neque enim. Donec nec lorem adipiscing, lobortis elit nec, aliquet massa. Morbi augue augue, tempor vel nunc in, aliquam pellentesque quam. Nulla viverra vehicula vehicula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+    </div>
+    <div class="face three">
+      <h1>About</h1>
+    </div>
+    <div class="face four">
+      <h1>News</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum placerat arcu in volutpat pulvinar. Ut a neque enim. Donec nec lorem adipiscing, lobortis elit nec, aliquet massa. Morbi augue augue, tempor vel nunc in, aliquam pellentesque quam. Nulla viverra vehicula vehicula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+    </div>
+    <div class="face five">
+      <h1>Contact</h1>
+      <label for="name">Name</label>
+      <br />
+      <input type="text" id="name" />
+      <br />
+      <label for="message">Message</label>
+      <br />
+      <textarea id="message" name="message"></textarea>
+      <br />
+      <input type="submit" value="send!" />
+    </div>
+    <div class="face six"></div>
+  </div>
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> 
+<script>
+$(document).ready(function(){
+    
+    $("#homelink").click(function(){
+       calcRotation(0);
+    });
+
+    $("#aboutLink").click(function(){
+      calcRotation(90);
+    });
+    
+    $("#newsLink").click(function(){
+       calcRotation(180);
+    });
+
+    $("#contactLink").click(function(){
+        calcRotation(270);
+    });
+    
+    function calcRotation(rot){
+           $("#cube").css("transform", "rotateY(-" + rot + "deg)");
+    }
+});
+</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</body>
+</html>

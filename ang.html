@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+ 	<link rel="stylesheet" href="bower_components/slick-carousel/slick/slick.css">
+    <link rel="stylesheet" href="bower_components/slick-carousel/slick/slick-theme.css">
+	<style type="text/css" media="screen">
+		body, html {
+		    background: #000;
+		    /*			background: #4DBD33;*/
+		    margin: 0 auto;
+		    overflow: hidden;
+		}
+
+		.slick-slide {
+		    outline: none
+		}
+
+		.carouseler {
+		    display: block;
+		    margin: 0 auto;
+		    /*width: 60%;*/
+		    text-align: center;
+		    vertical-align: middle;
+		    cursor: none;
+		}
+
+		.carouseler .img_holder {
+		    display: inline-block;
+		    vertical-align: middle;
+		    white-space: nowrap;
+		    text-align: center;
+		    margin: auto;
+		}
+
+	</style>
+
+	<body oncontextmenu="return false;"ng-app="wsssGalleryApp">
+		<div ng-view=""></div>
+
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular-route.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.8/slick.min.js"></script>
+<!-- 
+    <script src="bower_components/jquery/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/slick-carousel/slick/slick.js"></script>
+    <script src="bower_components/angular-slick-carousel/dist/angular-slick.min.js"></script>	</head>
+ -->
+
+		<script src="angular-slick.js"></script>
+		<script src="app.js"></script>
+
+	</body>
+</html>

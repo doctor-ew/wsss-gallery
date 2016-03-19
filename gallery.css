@@ -1,0 +1,82 @@
+
+
+
+body, html {
+    background: #000;
+    /*			background: #4DBD33;*/
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.slick-slide {
+    outline: none
+}
+
+.carouseler {
+    display: block;
+    margin: 0 auto;
+    /*width: 60%;*/
+    text-align: center;
+    vertical-align: middle;
+    cursor: none;
+}
+
+.carouseler .img_holder {
+    display: inline-block;
+    vertical-align: middle;
+    white-space: nowrap;
+    text-align: center;
+    margin: auto;
+}
+
+.helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.carouseler .img_holder img {
+    display: inline;
+    height: 100% !important;
+    /*		    height:864px !important;*/
+    line-height: normal;
+    vertical-align: middle;
+    text-align: center;
+}
+
+
+/* */
+
+.carouseler button {
+    visibility: hidden;
+}
+
+.nav_img_holder {
+    display: inline;
+    float: left;
+    width: 100px;
+    height: 100px;
+}
+
+.nav_img_holder img {
+    width: 100px;
+    height: 100px;
+}
+
+#wrapper {
+    -webkit-perspective: 1100px;
+    -webkit-perspective-origin: 50% 300px;
+    perspective: 1100px;
+    perspective-origin: 50% 300px;
+    /* margin-top: 150px;*/
+}
+
+
+#cms .current_slide {
+    background: magenta;
+}
+
+.cms-item {
+    float: left;    
+}
+

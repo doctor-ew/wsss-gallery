@@ -1,0 +1,135 @@
+
+
+
+body, html {
+    background: #000;
+    /*			background: #4DBD33;*/
+    margin: 0 auto;
+}
+
+.slick-slide {
+    outline: none
+}
+
+.carouseler {
+    display: block;
+    margin: 0 auto;
+    /*width: 60%;*/
+    text-align: center;
+    vertical-align: middle;
+    cursor: none;
+    overflow: hidden;
+}
+
+.carouseler .img_holder {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    white-space: nowrap;
+    text-align: center;
+    margin: auto;
+}
+
+.carouseler .img_holder:after {
+    background-size: contain;
+    content:"";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+}
+
+.carouseler .img_holder.swapped_swapped:after {
+    background: url(swapped.png) center center no-repeat;
+}
+.carouseler .img_holder.swapped_haunted:after {
+    background: url(haunted.png) center center no-repeat;
+}
+.carouseler .img_holder.swapped_potential:after {
+    background: url(potential.png) center center no-repeat;
+}
+
+.helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.carouseler .img_holder img {
+    display: inline;
+    height: 100% !important;
+    /*		    height:864px !important;*/
+    line-height: normal;
+    vertical-align: middle;
+    text-align: center;
+}
+
+
+/* */
+
+.carouseler button {
+    visibility: hidden;
+}
+
+.nav_img_holder {
+    display: inline;
+    float: left;
+    width: 100px;
+    height: 100px;
+}
+
+.nav_img_holder img {
+    width: 100px;
+    height: 100px;
+}
+
+#wrapper {
+    -webkit-perspective: 1100px;
+    -webkit-perspective-origin: 50% 300px;
+    perspective: 1100px;
+    perspective-origin: 50% 300px;
+    /* margin-top: 150px;*/
+}
+
+
+#cms .current_slide {
+    background: magenta;
+}
+#cms li[data-swapped='swapped']:before {
+    content: "swapped";
+}
+#cms li[data-swapped='haunted']:before {
+    content: "haunted";
+}
+#cms li[data-swapped='potential']:before {
+    content: "potential";
+}
+#cms .hideMe {
+    background: #333;
+}
+#cms .hideMe img{
+    opacity: 0.25;
+}
+
+
+#cms li[data-showState='false'] {
+        background: #333;
+}
+#cms li[data-showState='false'] img{
+    opacity: 0.25;
+}
+
+
+.ui-icon {
+    display: inline-block;
+}
+
+#uploadframe {
+    position: absolute; 
+    border: none;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
